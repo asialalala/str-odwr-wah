@@ -1,3 +1,10 @@
+
+% ustawienie czasu symulacji
+tSim = 10;
+global h;
+h = 0.01;
+t = (0:h:tSim)';
+
 M = 0.5;                                % masa wózka
 m = 0.2;                                % masa wahadła
 L = 0.3;                                % długość wahadła
