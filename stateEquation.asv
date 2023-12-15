@@ -1,6 +1,7 @@
 % Obliczenie pochodnej stanów z równań nieliniowych
 
 function [stateDot] = stateEquation (state, params, u)
+
      % parametry
      M = params(1); % masa wozka
      m = params(2); % masa wahadla
@@ -20,13 +21,16 @@ function [stateDot] = stateEquation (state, params, u)
 
 
      % potrzebne wartosci
-     cTheta = cos(theta);
-     sTheta = sin(theta);
-     q = m^2 * L^2 * cTheta^2 - (I + m * L^2) * (M + m);
+     cT = cos(theta);
+     sT = sin(theta);
+     q = m^2 * L^2 * cT^2 - (M + m)*(I + m*L^2);
 
      % oblizcenie wartosci stanow
      stateDot(1) = x;
-     stateDot(2) = (F * m * L * cTheta - b * m * L * cTheta * xDot - (M + m) * m * L * g * sTheta + m^2 * L^2 * sTheta * cTheta * thetaDot^2) / q;
+     stateDot(2) = (F * m * L * cT - b * m * L * cT * xDot - (M + m) * m * L * g * sT + m^2 * L^2 * sT * cT * thetaDot^2) / q;
      stateDot(3) = theta;
-     stateDot(4) = ((I + m * L^2) * (-F + b * xDot - m * L * sTheta * thetaDot^2) + m^2 * L^2 * g * sTheta * cTheta) / q % gdy tu damy srednik - przestaje dzialac, czy to dobrze liczy?
+     stateDot(4) = ((I + m * L^2) * (-F + b * xDot - m * L * sT * thetaDot^2) + m^2 * L^2 * g * sT * cT) / q;
+     
+     stateDot(4) = 0;
+
 end
