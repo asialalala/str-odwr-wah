@@ -30,11 +30,11 @@ A = [0,       1,             0, 0;
 B = [0, 1/M, 0, 1/(M*L)]';               % macierz sterowania
 
 zero=[0,0,0,0];
-C = [1,0,0,0;                        % macierz wyjscia,
-    zero;                            % gdy y = x1
-    zero;
-    zero];                           % macierzy wyjścia
-% C = eye(4);                        % w podstawowej wersji, gdy y=x
+% C = [1,0,0,0;                        % macierz wyjscia,
+%     zero;                            % gdy y = x1
+%     zero;
+%     zero];                           % macierzy wyjścia
+C = eye(4);                        % w podstawowej wersji, gdy y=x
 
 D = [0, 0, 0,0]';                       % macierz transmisyjna
 
@@ -51,13 +51,14 @@ lambda = [-7; -8; -4; -10];
 R = 10;
 Q = diag([1, 0, 0, 0]);
 K =  lqr(system, Q, R);                 % rozwiązanie
-
 %%%%% Rzadanie %%%%%%%%
 y = 100;                                  % składowa położenia wózka
 
 Y = [y, 0, 0, 0]';                       % porządane połozenie wózka
 
 
-sim("schemat.slx");
+pomoc = [1, 1, 1, 1];
+%sim("schemat.slx");
+sim("otwartaPetla.slx");
 
 
