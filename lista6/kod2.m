@@ -1,0 +1,1 @@
+% zakłócenia skorelowane
