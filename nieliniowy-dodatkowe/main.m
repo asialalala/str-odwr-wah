@@ -31,12 +31,12 @@ A = [0,       1,             0, 0;
 
 B = [0, 1/M, 0, 1/(M*L)]';              % macierz sterowania
 
-% zero=[0,0,0,0];
-% C = [1,0,0,0;                         % macierz wyjscia,
-%     zero;                             % gdy y = x1
-%     zero;
-%     zero];                            % macierzy wyjścia
-C = eye(4);                             % w podstawowej wersji, gdy y=x
+zero=[0,0,0,0];
+C = [1,0,0,0;                         % macierz wyjscia,
+    zero;                             % gdy y = x1
+    zero;
+    zero];                            % macierzy wyjścia
+% C = eye(4);                             % w podstawowej wersji, gdy y=x
 
 D = [0, 0, 0,0]';                       % macierz transmisyjna
 
@@ -61,8 +61,8 @@ u = zeros(1,tt);                        % wartości siły przykładanej do wózk
 
 disp('Początek symulacji');
 
-%sim("schemat.slx");
+sim("schemat.slx");
 % sim("otwartaPetla.slx");
-sim("bezObserwatora.slx");
+% sim("bezObserwatora.slx");
 
 

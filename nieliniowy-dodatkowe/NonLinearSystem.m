@@ -10,9 +10,9 @@
 % state0 - wektor stanu poczatkowego
 % params - parametry wahadla
 
-function [ sys,init,str,ts ] = NonLinearSystem(t,state,u,flag,state0,params)
+function [ sys,init,str,ts ] = NonLinearSystem(t,state,u,flag,state0,params,C)
   switch flag
-            case 0
+            case 0              %inicjalizacja
                 s = simsizes;
                 s.NumContStates  = 4;  
                 s.NumDiscStates  = 0;
@@ -25,12 +25,12 @@ function [ sys,init,str,ts ] = NonLinearSystem(t,state,u,flag,state0,params)
                 str = [];
                 ts = [0 0]; 
                 init = state0;
-            case 1    
+            case 1              % wyznaczenie pochodnych
                 stateDot = stateEquation(state,params,u);
                 sys = stateDot;
-            case 3
-                sys = state; % wyjsciem jest stan     
-            case {2,4,9}
+            case 3              % wyznaczenie stanów
+                sys = C*state;    % wyjsciem jest stan     
+            case {2,4,9}        % do dyskretnych, zmiennych czasów próbkowania i zakończenia symulaci
                 sys = []; 
             otherwise
                 error(['unhandled flag = ',num2str(flag)]);
