@@ -26,7 +26,7 @@ function [stateDot] = stateEquation (state, params, u)
      q = m^2 * L^2 * cTheta^2 - (I + m * L^2) * (M + m);
 
      % oblizcenie wartosci stanow
-     stateDot(1) = xDot;                                                                                                                                % x
+     stateDot(1) = xDot;                                                            
      stateDot(2) = ((I + m * L^2) * (-F + b * xDot - m * L * sTheta * thetaDot^2) + m^2 * L^2 * g * sTheta * cTheta) / q;                               % xDot
      stateDot(3) = thetaDot;                                                                                                                            % theta
      stateDot(4) = (F * m * L * cTheta - b * m * L * cTheta * xDot - (M + m) * m * L * g * sTheta + m^2 * L^2 * sTheta * cTheta * thetaDot^2) / q;      % thetaDot

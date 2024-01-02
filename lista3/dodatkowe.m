@@ -33,7 +33,7 @@ lambda = [-7; -8; -4; -10];
 
 
 %%%%% te parametry możemy dobierać %%%%%%
-R = 10;
+R = 1;
 Q = diag([1, 0, 0, 0]);
 x0 = [0, 0, 0, 0]';                     % warunek poczatkowy
 y = 100;                                  % składowa położenia wózka
